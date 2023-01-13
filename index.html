@@ -1,1 +1,76 @@
-hello world!!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>A Project Of Dylan</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <script src="assets/js/lib/video/bideo.js"></script>
+    <script src="assets/js/lib/video/main.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <video id="background_video" loop muted></video>
+        <div id="video_cover"></div>
+        <div id="overlay"></div>
+
+        <div id="video_controls">
+          <span id="play">
+            <img src="assets/js/lib/video/play.png" />
+          </span>
+                <span id="pause">
+            <img src="assets/js/lib/video/pause.png" />
+          </span>
+        </div>
+
+        <section id="main_content">
+            <div id="head">
+                <h1>metaverse</h1>
+                <p class="info">Technology surpasses technology</p>
+            </div>
+
+            <div id="links">
+<!--                <a href="#">dylan个人简介</a>-->
+                <a href="#">作品集</a>
+            </div>
+        </section>
+    </div>
+<script>
+    (function () {
+        let bv = new Bideo()
+        bv.init({
+            // Video element
+            videoEl: document.querySelector('#background_video'),
+            // Container element
+            container: document.querySelector('body'),
+            // Resize
+            resize: true,
+            autoplay: true,
+            isMobile: window.matchMedia('(max-width: 768px)').matches,
+
+            playButton: document.querySelector('#play'),
+            pauseButton: document.querySelector('#pause'),
+            // Array of objects containing the src and type
+            // of different video formats to add
+            src: [
+                {
+                    src: '/videos/metaverse.mp4',
+                    type: 'video/mp4'
+                }
+            ],
+            // What to do once video loads (initial frame)
+            onLoad: function () {
+                document.querySelector('#video_cover').style.display = 'none';
+            }
+        });
+    }());
+
+</script>
+</body>
+</html>
